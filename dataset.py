@@ -30,24 +30,19 @@ def FrameCapture(path, opath):
         
 
 
-path = 'Training Dataset'
-save_path = 'DatasetFinal'
-for subject_folder in os.listdir(path):
+path = 'train'
+save_path = 'Dataset'
+for label_folder in os.listdir(path):
 	#print(subject_folder)
 		#print (subject_folder)
-	folder_path = os.path.join(path,subject_folder)
-	print(subject_folder)
+	label_folder_path = os.path.join(path,label_folder)
+	print(label_folder)
 	print()
-	for category in os.listdir(folder_path):
+	for video_file in os.listdir(label_folder_path):
+		print(video_file)
+		video_path = os.path.join(label_folder_path,video_file)
+		output_path = os.path.join(save_path,label_folder, video_file[0:3] + '_')
+		FrameCapture(video_path, output_path)
 		
-		
-		if (category == "noglasses") or (category == "glasses") : 
-			print(category)
-			category_path = os.path.join(folder_path, category)
-
-			video_path = os.path.join(category_path, 'nonsleepyCombination.avi')
-			Alert_path = 'Alert/' + subject_folder+ '_' + category + '_A_'
-			#print(Alert_path)
-			FrameCapture(video_path, os.path.join(save_path,Alert_path))
 
 	print()
